@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <title>Document</title>
+    <style>
+        input#name:invalid:focus {
+            border: 4px solid rgb(255, 0, 0);
+        }
+
+        input#email:invalid:focus {
+            border: 4px solid rgb(255, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Registration From</h2>
+    <form id="userData">
+
+        <label for="name">Name</label>
+        <input required type="text" id="name" name="name" placeholder="Enter full name" required><br />
+
+        <label for="email">Email</label>
+        <input required type="email" id="email" name="email" placeholder="Enter email"><br />
+
+        <label for="password">Password</label>
+        <input required type="password" id="password" name="password" placeholder="Enter password"><br />
+
+        <label for="dob" min="18" max="55">Date of Birth</label>
+        <input required type="date" id="dob" name="dob"><br />
+
+        <label for="acceptTerms">Accept our Terms & Conditions</label>
+        <input required type="checkbox" name="acceptTerms" id="acceptTerms">
+
+        <button type="submit" id="submit">Submit</button>
+
+    </form>
+
+    <h2>Entries</h2>
+    <div id="user-entries"></div>
+</body>
+<script>
+    const email = document.getElementById('email');
+    email.addEventListener('input', () => validate(email));
+    const submit = document.getElementById('submit')
+    submit.addEventListener('click', () => validate(email))
+    function validate(element) {
+        if (element.validity.typeMismatch) {
+            element.setCustomValidity("The Email is not the right format");
+            element.reportValidity();
+        } else {
+            element.setCustomValidity('');
+        }
+    }
+</script>
+<script src="Final.js"></script>
+
+</html>
+
+
